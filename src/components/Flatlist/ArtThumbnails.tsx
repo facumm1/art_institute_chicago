@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList} from 'react-native';
 
 import {Thumbnail} from '../Thumbnails/Thumbnail';
 import {Loading} from '../Loading/Loading';
@@ -16,11 +16,6 @@ export const ArtThumbnails: React.FC<Props> = ({artworks}) => {
       renderItem={({item}) => <Thumbnail item={item} />}
       keyExtractor={({id}) => id}
       ListEmptyComponent={Loading}
-      style={styles.flatlist}
     />
   );
 };
-
-const styles = StyleSheet.create({
-  flatlist: {borderWidth: 0, marginBottom: 50},
-});

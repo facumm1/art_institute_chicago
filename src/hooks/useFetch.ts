@@ -16,7 +16,14 @@ export const useFetch = () => {
       const response = await axios.get(endpoint);
       const items = response.data.data;
 
-      handleArtworks(items);
+      const updatedItems = items.map((artworkData: ArtworkTypes) => {
+        const {image_id} = artworkData;
+        const imageUrl = `https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`;
+
+        return {...artworkData, imageUrl};
+      });
+
+      handleArtworks(updatedItems);
     } catch (error) {
       console.error('Error fetching artworks:', error);
     }

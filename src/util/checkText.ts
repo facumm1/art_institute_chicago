@@ -1,11 +1,11 @@
-export const checkText = (text: string, to: number) => {
-  if (!text || text.length <= 0) {
-    return 'Not available';
+export const checkText = (text: string, customErrorMsg: string = 'Unknown') => {
+  if (!text) {
+    return customErrorMsg;
   }
 
-  if (text.length < to) {
-    return text;
+  if (text.length < 0) {
+    return customErrorMsg;
   }
 
-  return text.slice(0, to).trim() + '...';
+  return text;
 };

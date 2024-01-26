@@ -1,13 +1,17 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
 
+import {store} from './redux';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 const AIC: React.FC = () => {
   return (
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <BottomTabNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 };
 

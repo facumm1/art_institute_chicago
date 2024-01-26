@@ -10,4 +10,5 @@ export type ArtworkTypes = {
     alt_text: string;
   };
   imageUrl: string;
+  isFavourite: boolean;
 };

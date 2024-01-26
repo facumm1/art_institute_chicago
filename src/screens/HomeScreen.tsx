@@ -1,19 +1,19 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
 
 import {ArtThumbnails} from '../components/Flatlist/ArtThumbnails';
 import {colors} from '../theme/colors';
-import {useFetch} from '../hooks/useFetch';
 
 const HomeScreen: React.FC = () => {
-  const {artworks} = useFetch();
+  const {artworksData} = useSelector((state: any) => state.artworksData);
 
-  //TODO check all texts, what if endpoint is not working or no internet available.
+  //TODO what if endpoint is not working or no internet available.
   return (
     <View style={styles.container}>
       <Text style={styles.appTitle}>Browse</Text>
 
-      <ArtThumbnails artworks={artworks} />
+      <ArtThumbnails artworks={artworksData} />
     </View>
   );
 };

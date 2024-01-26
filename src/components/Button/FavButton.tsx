@@ -4,19 +4,17 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {colors} from '../../theme/colors';
 
-type Props = {};
+type Props = {
+  isFavourite: boolean;
+  handleFavourite: () => void;
+};
 
-export const FavButton: React.FC<Props> = () => {
-  const [isFav, setIsFav] = React.useState<boolean>(false);
-
-  const handleFav = () => setIsFav(prevFav => !prevFav);
-
-  //TODO create & use useToggle hook instead of this
+export const FavButton: React.FC<Props> = ({isFavourite, handleFavourite}) => {
   return (
-    <TouchableOpacity onPress={handleFav} style={styles.btn}>
+    <TouchableOpacity onPress={handleFavourite} style={styles.btn}>
       <AntDesign
         style={styles.icon}
-        name={isFav ? 'heart' : 'hearto'}
+        name={isFavourite ? 'heart' : 'hearto'}
         color={colors.orange}
         size={22.5}
       />

@@ -1,23 +1,24 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import FavScreen from '../screens/FavScreen';
 import ArtDetailsScreen from '../screens/ArtDetailsScreen';
+import FavouritesScreen from '../screens/FavouritesScreen';
 
 export type StackParamList = {
-  HomeScreen: undefined;
+  FavouritesScreen: undefined;
   ArtDetailsScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
 const FavStackNavigator: React.FC = () => {
+  //TODO fix types
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="HomeScreen" component={FavScreen} />
+      <Stack.Screen name="FavouritesScreen" component={FavouritesScreen} />
       <Stack.Screen name="ArtDetailsScreen" component={ArtDetailsScreen} />
     </Stack.Navigator>
   );

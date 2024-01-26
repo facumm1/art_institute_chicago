@@ -1,33 +1,27 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
-import {colors} from '../../theme/colors';
-import {ArtworkTypes} from '../../types';
 import useNavigate from '../../hooks/useNavigate';
-import {checkText, imageNotAvailable} from '../../util';
+import {ArtworkImage} from '../Image/ArtworkImage';
+import {ArtworkTypes} from '../../types';
+import {checkText} from '../../util';
+import {colors} from '../../theme/colors';
 
 export const Thumbnail: React.FC<{item: ArtworkTypes}> = ({item}) => {
   const {title, artist_title, date_display, thumbnail, imageUrl} = item;
   const {navigateTo} = useNavigate();
-
-  //TODO refactor this, check if HOC or factorize into comp is better
-  const [imageLoadError, setImageLoadError] = React.useState(false);
-
-  const handleImageError = () => {
-    setImageLoadError(true);
-  };
 
   return (
     <TouchableOpacity
       onPress={() => navigateTo('ArtDetailsScreen', item)}
       style={styles.container}>
       <View>
-        <Image
-          onError={handleImageError}
-          source={imageLoadError ? {uri: imageNotAvailable} : {uri: imageUrl}}
-          style={styles.img}
-          resizeMode="cover"
+        <ArtworkImage
+          imageUrl={imageUrl}
+          imageStyles={styles.img}
+          sizeMode={'cover'}
         />
+
         <Text style={styles.artistTitle} numberOfLines={2}>
           {checkText(artist_title)}
         </Text>

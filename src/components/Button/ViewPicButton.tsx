@@ -1,11 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {colors} from '../../theme/colors';
 
-export const SeeMoreButton: React.FC = () => {
+export const ViewPicButton: React.FC<{imageUrl: string}> = ({imageUrl}) => {
   return (
-    <TouchableOpacity style={styles.container}>
-      <Text style={styles.text}>SEE MORE</Text>
+    <TouchableOpacity
+      onPress={() => Linking.openURL(imageUrl)}
+      style={styles.container}>
+      <Text style={styles.text}>VIEW FULL PIC</Text>
     </TouchableOpacity>
   );
 };

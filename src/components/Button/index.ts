@@ -1,5 +1,5 @@
 import {FavButton} from './FavButton';
-import {SeeMoreButton} from './SeeMoreButton';
+import {ViewPicButton} from './ViewPicButton';
 import {GoBackButton} from './GoBackButton';
 
-export {FavButton, SeeMoreButton, GoBackButton};
+export {FavButton, ViewPicButton, GoBackButton};

@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {colors} from '../../theme/colors';
+import {AnimatedBounceText} from '../../wrapper';
 
 type OptionsParams = {
   focused: boolean;
@@ -10,13 +10,7 @@ type OptionsParams = {
 
 export const HomeStackOptions = {
   tabBarLabel: ({focused}: OptionsParams) => (
-    <Text
-      style={{
-        color: focused ? colors.white : colors.gray,
-        fontFamily: 'JosefinSans-Medium',
-      }}>
-      Artworks
-    </Text>
+    <AnimatedBounceText focused={focused}>Artworks</AnimatedBounceText>
   ),
   tabBarIcon: ({focused}: OptionsParams) => (
     <AntDesign
@@ -29,13 +23,7 @@ export const HomeStackOptions = {
 
 export const FavStackOptions = {
   tabBarLabel: ({focused}: OptionsParams) => (
-    <Text
-      style={{
-        color: focused ? colors.white : colors.gray,
-        fontFamily: 'JosefinSans-Medium',
-      }}>
-      Favourites
-    </Text>
+    <AnimatedBounceText focused={focused}>Favourites</AnimatedBounceText>
   ),
   tabBarIcon: ({focused}: OptionsParams) => (
     <AntDesign

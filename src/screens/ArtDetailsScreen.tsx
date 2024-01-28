@@ -5,8 +5,8 @@ import {useIsFocused} from '@react-navigation/native';
 import {GoBackButton} from '../components/Button';
 import {ArtworkImage} from '../components/Image/ArtworkImage';
 import {ArtworkDetails} from '../components/Text/ArtworkDetails';
-import {useFavourite, useNavigate} from '../hooks';
 
+import {useFavourite, useNavigate} from '../hooks';
 import {colors} from '../theme/colors';
 import {ArtworkTypes} from '../types';
 

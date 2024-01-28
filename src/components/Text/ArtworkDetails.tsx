@@ -5,6 +5,7 @@ import {checkText} from '../../util';
 import {FavButton, ViewPicButton} from '../Button';
 import {ArtworkTypes} from '../../types';
 import {colors} from '../../theme/colors';
+import {AnimatedFadeView} from '../../wrapper';
 
 type Props = {
   artwork: ArtworkTypes;
@@ -24,7 +25,7 @@ export const ArtworkDetails: React.FC<Props> = ({artwork, handleFavourite}) => {
 
   return (
     <View style={styles.content}>
-      <View style={styles.header}>
+      <AnimatedFadeView viewStyle={styles.header}>
         <Text style={styles.title} numberOfLines={5}>
           {checkText(title)}
         </Text>
@@ -32,9 +33,9 @@ export const ArtworkDetails: React.FC<Props> = ({artwork, handleFavourite}) => {
           isFavourite={isFavourite}
           handleFavourite={handleFavourite}
         />
-      </View>
+      </AnimatedFadeView>
 
-      <View style={styles.infoContainer}>
+      <AnimatedFadeView viewStyle={styles.infoContainer} duration={2500}>
         <View style={styles.infoBox}>
           <Text style={styles.section}>Artist:</Text>
           <Text style={styles.sectionValue} numberOfLines={8}>
@@ -55,9 +56,13 @@ export const ArtworkDetails: React.FC<Props> = ({artwork, handleFavourite}) => {
             {checkText(place_of_origin)}
           </Text>
         </View>
-      </View>
+      </AnimatedFadeView>
 
-      <Text style={styles.text}>{checkText(description, 'Not Available')}</Text>
+      <AnimatedFadeView viewStyle={styles.descriptionBox} duration={4000}>
+        <Text style={styles.desc}>
+          {checkText(description, 'Not Available')}
+        </Text>
+      </AnimatedFadeView>
 
       <ViewPicButton imageUrl={imageUrl} />
     </View>
@@ -77,11 +82,11 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'JosefinSans-SemiBold',
   },
-  text: {
+  descriptionBox: {marginVertical: 20},
+  desc: {
     color: colors.white,
     fontSize: 16,
     fontFamily: 'JosefinSans-Light',
-    marginVertical: 20,
   },
   infoContainer: {
     alignSelf: 'center',

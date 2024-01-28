@@ -34,6 +34,7 @@ const HomeStackNavigator: React.FC = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: 'slide_from_right',
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="ArtDetailsScreen" component={ArtDetailsScreen} />

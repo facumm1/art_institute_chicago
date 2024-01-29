@@ -4,11 +4,11 @@ import {useSelector} from 'react-redux';
 
 import {ArtThumbnails} from '../components/Flatlist/ArtThumbnails';
 import {colors} from '../theme/colors';
+import {RootState} from '../redux';
 
 const HomeScreen: React.FC = () => {
-  const {artworksData} = useSelector((state: any) => state.artworksData);
+  const {artworksData} = useSelector((state: RootState) => state.artworksData);
 
-  //TODO what if endpoint is not working or no internet available.
   return (
     <View style={styles.container}>
       <Text style={styles.appTitle}>Browse</Text>

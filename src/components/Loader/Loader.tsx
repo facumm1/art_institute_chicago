@@ -2,8 +2,7 @@ import React from 'react';
 import {StyleSheet, ActivityIndicator} from 'react-native';
 import {colors} from '../../theme/colors';
 
-export const Loading = () => {
-  //TODO add skeleton while loading
+export const Loader = () => {
   return (
     <ActivityIndicator
       style={styles.indicator}

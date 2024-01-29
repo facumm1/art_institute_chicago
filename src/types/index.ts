@@ -1,3 +1,3 @@
-import {ArtworkTypes} from './ArtworkTypes';
+import {ArtworkTypes, ArtworkRouteType} from './ArtworkTypes';
 
-export type {ArtworkTypes};
+export type {ArtworkTypes, ArtworkRouteType};

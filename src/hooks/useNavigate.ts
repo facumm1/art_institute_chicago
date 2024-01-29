@@ -1,17 +1,21 @@
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {ArtworkTypes} from '../types';
+import {StackParamList} from '../navigation/HomeStackNavigator';
 
 type UseNavigateHook = {
-  navigateTo: (screenName: string, data?: ArtworkTypes) => void;
+  navigateTo: (screenName: ScreenName, data: ArtworkTypes | any) => void;
   goBackNav: () => void;
-  updateFavIcon: (artwork: any) => void;
+  updateFavIcon: (artwork: ArtworkTypes) => void;
 };
 
-const useNavigate = (): UseNavigateHook => {
-  //TODO add types
-  const navigation = useNavigation<any>();
+type ScreenName = keyof StackParamList;
 
-  const navigateTo = (screenName: string, data?: ArtworkTypes) => {
+export type NavigateProp = NavigationProp<StackParamList, ScreenName>;
+
+const useNavigate = (): UseNavigateHook => {
+  const navigation = useNavigation<NavigateProp>();
+
+  const navigateTo = (screenName: ScreenName, data: ArtworkTypes | any) => {
     navigation.navigate(screenName, data);
   };
 
@@ -19,7 +23,7 @@ const useNavigate = (): UseNavigateHook => {
     navigation.goBack();
   };
 
-  const updateFavIcon = (artwork: any) => {
+  const updateFavIcon = (artwork: ArtworkTypes) => {
     navigation.setParams({...artwork, isFavourite: !artwork.isFavourite});
   };
 

@@ -1,3 +1,6 @@
+import {RouteProp} from '@react-navigation/native';
+import {StackParamList} from '../navigation/HomeStackNavigator';
+
 export type ArtworkTypes = {
   id: string;
   title: string;
@@ -12,3 +15,5 @@ export type ArtworkTypes = {
   imageUrl: string;
   isFavourite: boolean;
 };
+
+export type ArtworkRouteType = RouteProp<StackParamList, 'ArtDetailsScreen'>;

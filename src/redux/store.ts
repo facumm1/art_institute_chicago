@@ -5,6 +5,9 @@ import {persistReducer, persistStore} from 'redux-persist';
 
 import {chicagoApi, artworksSlice, favsSlice} from './';
 
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
@@ -20,7 +23,6 @@ const persistedReducer = persistReducer(
   }),
 );
 
-//TODO fix serializable
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>

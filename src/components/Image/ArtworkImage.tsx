@@ -21,7 +21,7 @@ export const ArtworkImage: React.FC<Props> = ({
     <Image
       onError={handleImageError}
       resizeMode={sizeMode}
-      source={imageError ? {uri: imageNotAvailable} : {uri: imageUrl}}
+      source={{uri: imageError ? imageNotAvailable : imageUrl}}
       style={imageStyles}
     />
   );

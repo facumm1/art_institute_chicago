@@ -3,16 +3,16 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import ArtDetailsScreen from '../screens/ArtDetailsScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
+import {ArtworkTypes} from '../types';
 
 export type StackParamList = {
   FavouritesScreen: undefined;
-  ArtDetailsScreen: undefined;
+  ArtDetailsScreen: ArtworkTypes;
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
 const FavStackNavigator: React.FC = () => {
-  //TODO fix types
   return (
     <Stack.Navigator
       screenOptions={{

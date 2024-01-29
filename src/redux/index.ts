@@ -1,11 +1,11 @@
 import {chicagoApi, useFetchArtworksQuery} from './chicagoApi';
-import {store} from './store';
+import {store, RootState} from './store';
 import {artworksSlice} from './artworksSlice';
 import {favsSlice} from './favsSlice';
 import {setArtworks} from './artworksSlice';
 
 export {chicagoApi, store, useFetchArtworksQuery};
 
-export {artworksSlice, favsSlice};
+export {artworksSlice, favsSlice, RootState};
 
 export {setArtworks};

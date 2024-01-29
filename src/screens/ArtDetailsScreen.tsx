@@ -8,9 +8,9 @@ import {ArtworkDetails} from '../components/Text/ArtworkDetails';
 
 import {useFavourite, useNavigate} from '../hooks';
 import {colors} from '../theme/colors';
-import {ArtworkTypes} from '../types';
+import {ArtworkRouteType} from '../types';
 
-type Props = {route: {params: ArtworkTypes}};
+type Props = {route: ArtworkRouteType};
 
 const ArtDetailsScreen: React.FC<Props> = ({route}) => {
   const {id, isFavourite, imageUrl} = route.params;

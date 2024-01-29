@@ -1,25 +1,19 @@
 import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import {Thumbnail} from '../components/Thumbnails/Thumbnail';
-import {NoFavourites} from '../components/Alert/NoFavourites';
+import {ArtThumbnails} from '../components/Flatlist/ArtThumbnails';
 import {colors} from '../theme/colors';
+import {RootState} from '../redux';
 
 const FavouritesScreen: React.FC = () => {
-  //TODO Add types & use ArtThumbnails
-  const {favsData} = useSelector((state: any) => state.favsData);
+  const {favsData} = useSelector((state: RootState) => state.favsData);
 
   return (
     <View style={styles.container}>
       <Text style={styles.appTitle}>Favourite artworks</Text>
 
-      <FlatList
-        data={favsData}
-        renderItem={({item}) => <Thumbnail item={item} />}
-        keyExtractor={({id}) => id}
-        ListEmptyComponent={NoFavourites}
-      />
+      <ArtThumbnails artworks={favsData} screen={false} />
     </View>
   );
 };

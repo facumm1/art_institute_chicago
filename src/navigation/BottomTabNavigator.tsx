@@ -13,7 +13,6 @@ export type TabParamList = {
 const Tab = createBottomTabNavigator<TabParamList>();
 
 const BottomTabNavigator: React.FC = () => {
-  //TODO fix line in tab
   return (
     <Tab.Navigator
       screenOptions={{

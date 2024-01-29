@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {HomeScreen, ArtDetailsScreen} from '../screens';
-import {useFetchArtworksQuery, setArtworks} from '../redux';
+import {useFetchArtworksQuery, setArtworks, RootState} from '../redux';
 import {ArtworkTypes} from '../types';
 import {findFavouriteArtworks} from '../util';
 
@@ -15,21 +15,22 @@ export type StackParamList = {
 const Stack = createNativeStackNavigator<StackParamList>();
 
 const HomeStackNavigator: React.FC = () => {
-  //TODO fix types
   const {data, isLoading} = useFetchArtworksQuery({});
-  const {favsData} = useSelector((state: any) => state.favsData);
+  const {favsData} = useSelector((state: RootState) => state.favsData);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isLoading) {
-      const checkedArtworks = findFavouriteArtworks(data, favsData);
+      const checkedArtworks = findFavouriteArtworks(
+        data as ArtworkTypes[],
+        favsData,
+      );
 
       dispatch(setArtworks(checkedArtworks));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
-  //TODO add types for route.params
   return (
     <Stack.Navigator
       screenOptions={{

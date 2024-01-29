@@ -16,9 +16,7 @@ const HomeScreen: React.FC<Props> = ({handlePagination}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.appTitle}>Browse</Text>
-      <Text style={styles.subtitle}>
-        Artworks from Art Institute Of Chicago
-      </Text>
+      <Text style={styles.subtitle}>Art Institute Of Chicago - Artworks</Text>
 
       <ArtThumbnails
         handlePagination={handlePagination}

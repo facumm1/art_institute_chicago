@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {colors} from '../../theme/colors';
 import useNavigate from '../../hooks/useNavigate';
 
-export const GoBackButton: React.FC = () => {
+export const GoBackButton: React.FC = React.memo(() => {
   const {goBackNav} = useNavigate();
 
   return (
@@ -13,7 +13,7 @@ export const GoBackButton: React.FC = () => {
       <AntDesign name="arrowleft" color={colors.orange} size={30} />
     </TouchableOpacity>
   );
-};
+});
 
 const styles = StyleSheet.create({
   btn: {

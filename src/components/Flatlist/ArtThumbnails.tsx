@@ -4,7 +4,7 @@ import {FlatList} from 'react-native';
 import {Loader} from '../Loader/Loader';
 import {NoFavourites} from '../Alert/NoFavourites';
 
-import {Thumbnail} from '../Thumbnails/Thumbnail';
+import Thumbnail from '../Thumbnails/Thumbnail';
 import {ArtworkTypes} from '../../types';
 
 type Props = {

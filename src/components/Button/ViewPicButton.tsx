@@ -7,7 +7,7 @@ export const ViewPicButton: React.FC<{imageUrl: string}> = ({imageUrl}) => {
     <TouchableOpacity
       onPress={() => Linking.openURL(imageUrl)}
       style={styles.container}>
-      <Text style={styles.text}>VIEW FULL PIC</Text>
+      <Text style={styles.text}>VIEW IMAGE</Text>
     </TouchableOpacity>
   );
 };

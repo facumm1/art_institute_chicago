@@ -10,19 +10,17 @@ type Props = {
   sizeMode: ImageResizeMode;
 };
 
-export const ArtworkImage: React.FC<Props> = ({
-  imageUrl,
-  imageStyles,
-  sizeMode,
-}) => {
-  const {on: imageError, setToggle: handleImageError} = useToggle();
+export const ArtworkImage: React.FC<Props> = React.memo(
+  ({imageUrl, imageStyles, sizeMode}) => {
+    const {on: imageError, setToggle: handleImageError} = useToggle();
 
-  return (
-    <Image
-      onError={handleImageError}
-      resizeMode={sizeMode}
-      source={{uri: imageError ? imageNotAvailable : imageUrl}}
-      style={imageStyles}
-    />
-  );
-};
+    return (
+      <Image
+        onError={handleImageError}
+        resizeMode={sizeMode}
+        source={{uri: imageError ? imageNotAvailable : imageUrl}}
+        style={imageStyles}
+      />
+    );
+  },
+);

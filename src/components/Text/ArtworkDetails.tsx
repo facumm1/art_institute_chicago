@@ -4,13 +4,18 @@ import {StyleSheet, Text, View} from 'react-native';
 import {checkText} from '../../util';
 import {FavButton, ViewPicButton} from '../Button';
 import {ArtworkTypes} from '../../types';
-import {colors} from '../../theme/colors';
 import {AnimatedFadeView} from '../../wrapper';
+import {DetailsDescription, DetailsInformation} from './';
+import {colors} from '../../theme/colors';
 
 type Props = {
   artwork: ArtworkTypes;
   handleFavourite: () => void;
 };
+
+const MemoizedDetailsInformation = React.memo(DetailsInformation);
+const MemoizedDetailsDescription = React.memo(DetailsDescription);
+const MemoizedViewPicButton = React.memo(ViewPicButton);
 
 export const ArtworkDetails: React.FC<Props> = ({artwork, handleFavourite}) => {
   const {
@@ -35,36 +40,15 @@ export const ArtworkDetails: React.FC<Props> = ({artwork, handleFavourite}) => {
         />
       </AnimatedFadeView>
 
-      <AnimatedFadeView viewStyle={styles.infoContainer} duration={2500}>
-        <View style={styles.infoBox}>
-          <Text style={styles.section}>Artist:</Text>
-          <Text style={styles.sectionValue} numberOfLines={8}>
-            {checkText(artist_title)}
-          </Text>
-        </View>
+      <MemoizedDetailsInformation
+        artist_title={artist_title}
+        date_display={date_display}
+        place_of_origin={place_of_origin}
+      />
 
-        <View style={styles.infoBox}>
-          <Text style={styles.section}>Year:</Text>
-          <Text style={styles.sectionValue} numberOfLines={8}>
-            {checkText(date_display)}
-          </Text>
-        </View>
+      <MemoizedDetailsDescription description={description} />
 
-        <View style={styles.infoBox}>
-          <Text style={styles.section}>Origin:</Text>
-          <Text style={styles.sectionValue} numberOfLines={8}>
-            {checkText(place_of_origin)}
-          </Text>
-        </View>
-      </AnimatedFadeView>
-
-      <AnimatedFadeView viewStyle={styles.descriptionBox} duration={4000}>
-        <Text style={styles.desc}>
-          {checkText(description, 'Not Available')}
-        </Text>
-      </AnimatedFadeView>
-
-      <ViewPicButton imageUrl={imageUrl} />
+      <MemoizedViewPicButton imageUrl={imageUrl} />
     </View>
   );
 };
@@ -82,22 +66,4 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'JosefinSans-SemiBold',
   },
-  descriptionBox: {marginVertical: 20},
-  desc: {
-    color: colors.white,
-    fontSize: 16,
-    fontFamily: 'JosefinSans-Light',
-  },
-  infoContainer: {
-    alignSelf: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  infoBox: {
-    paddingHorizontal: 10,
-    width: '33%',
-  },
-  section: {fontFamily: 'JosefinSans-Medium', color: colors.gray},
-  sectionValue: {fontFamily: 'JosefinSans-Medium', color: colors.white},
 });

@@ -15,6 +15,8 @@ type Props = {route: ArtworkRouteType};
 const ArtDetailsScreen: React.FC<Props> = ({route}) => {
   const {id, isFavourite, imageUrl} = route.params;
 
+  //console.log('Rendered!');
+
   const isFocused = useIsFocused();
   const {goBackNav, updateFavIcon} = useNavigate();
   const {addToFavourites, removeFromFavourites} = useFavourite();

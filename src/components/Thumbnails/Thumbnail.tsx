@@ -7,7 +7,7 @@ import {ArtworkTypes} from '../../types';
 import {checkText} from '../../util';
 import {colors} from '../../theme/colors';
 
-export const Thumbnail: React.FC<{item: ArtworkTypes}> = ({item}) => {
+const Thumbnail: React.FC<{item: ArtworkTypes}> = ({item}) => {
   const {title, artist_title, date_display, thumbnail, imageUrl} = item;
   const {navigateTo} = useNavigate();
 
@@ -41,6 +41,8 @@ export const Thumbnail: React.FC<{item: ArtworkTypes}> = ({item}) => {
     </TouchableOpacity>
   );
 };
+
+export default React.memo(Thumbnail);
 
 const styles = StyleSheet.create({
   container: {

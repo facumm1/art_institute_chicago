@@ -17,6 +17,7 @@ const FavStackNavigator: React.FC = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: 'slide_from_right',
       }}>
       <Stack.Screen name="FavouritesScreen" component={FavouritesScreen} />
       <Stack.Screen name="ArtDetailsScreen" component={ArtDetailsScreen} />

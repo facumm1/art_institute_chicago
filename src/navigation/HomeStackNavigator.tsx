@@ -6,6 +6,7 @@ import {HomeScreen, ArtDetailsScreen} from '../screens';
 import {useFetchArtworksQuery, setArtworks, RootState} from '../redux';
 import {ArtworkTypes} from '../types';
 import {findFavouriteArtworks} from '../util';
+import {usePagination} from '../hooks/usePagination';
 
 export type StackParamList = {
   HomeScreen: undefined;
@@ -15,7 +16,8 @@ export type StackParamList = {
 const Stack = createNativeStackNavigator<StackParamList>();
 
 const HomeStackNavigator: React.FC = () => {
-  const {data, isLoading} = useFetchArtworksQuery({});
+  const {pagination, handlePagination} = usePagination();
+  const {data, isLoading} = useFetchArtworksQuery({limit: pagination});
   const {favsData} = useSelector((state: RootState) => state.favsData);
   const dispatch = useDispatch();
 
@@ -29,7 +31,7 @@ const HomeStackNavigator: React.FC = () => {
       dispatch(setArtworks(checkedArtworks));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [data, isLoading]);
 
   return (
     <Stack.Navigator
@@ -37,7 +39,10 @@ const HomeStackNavigator: React.FC = () => {
         headerShown: false,
         animation: 'slide_from_right',
       }}>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen
+        name="HomeScreen"
+        children={() => <HomeScreen handlePagination={handlePagination} />}
+      />
       <Stack.Screen name="ArtDetailsScreen" component={ArtDetailsScreen} />
     </Stack.Navigator>
   );

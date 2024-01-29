@@ -12,7 +12,7 @@ export const chicagoApi = createApi({
   baseQuery: fetchBaseQuery({baseUrl}),
   endpoints: builder => ({
     fetchArtworks: builder.query({
-      query: () => '/artworks?limit=10',
+      query: ({limit}) => `/artworks?limit=${limit}`,
       transformResponse: (res: ApiResponse) => {
         const artworks = res.data.map((artwork: ArtworkTypes) => {
           const {image_id} = artwork;

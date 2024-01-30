@@ -9,7 +9,7 @@ Hi! This is a coding challenge for Modak Makers. I created a catalog application
 
 ## Application Optional Features
 
-NewsApp has the following extra features or development tools:
+The app has the following extra features or development tools:
 
 - **Redux-toolkit** to manage application state:
   Used for general artworks and favourite artworks. ✓
